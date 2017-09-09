@@ -6,6 +6,8 @@ using namespace std;
 int binarySearch(int A[], int N, int key) {
     int low = 0;
     int high = N - 1;
+    /* To convert recursion to iterative, simple way to remember is 
+       to move the base if condition to while() in most cases*/
     while(low <= high) {
         int mid = (low+high)/2;
         if(key < A[mid]) {
