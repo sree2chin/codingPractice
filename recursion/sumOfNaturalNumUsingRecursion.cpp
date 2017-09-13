@@ -7,7 +7,6 @@ int sumOfNaturalNumUsingRecursion(int N) {
     } else {
        return sumOfNaturalNumUsingRecursion(N-1) + N; 
     }
-    
 }
 
 int main() {
