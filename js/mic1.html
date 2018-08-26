@@ -1,0 +1,51 @@
+<html>
+	<script>
+		var givenJson = {
+			"Employees": [
+				{"ID": 1, "Name": "Emp1", "Age": 25, "Salary": 10000, "DeptID": 1},
+				{"ID": 2, "Name": "Emp2", "Age": 35, "Salary": 20000, "DeptID": 1},
+				{"ID": 3, "Name": "Emp3", "Age": 28, "Salary": 30000, "DeptID": 1},
+				{"ID": 4, "Name": "Emp4", "Age": 41, "Salary": 40000, "DeptID": 1},
+				{"ID": 5, "Name": "Emp5", "Age": 31, "Salary": 25000, "DeptID": 2}
+			],
+			"Departments": [
+				{"ID": 1, "Name": "Dept1", "OwnerID": 4},
+				{"ID": 2, "Name": "Dept2", "OwnerID": 5}
+			]
+		}
+		// console.log(givenJson);
+		var getListOfEmpIds = function(data, ownerId) {
+			var givenDeptId;
+			// find dept
+			for(var i = 0; i < data.Departments.length; i++) {
+				if(data.Departments[i].OwnerID == ownerId) {
+					givenDeptId = data.Departments[i].ID;
+				}
+			}
+
+			if(givenDeptId != undefined) {
+				var sumOfSalary = 0;
+				var ctr = 0;
+				for(var i = 0; i < data.Employees.length; i++) {
+					if(data.Employees[i].DeptID == givenDeptId) {
+						sumOfSalary += data.Employees[i].Salary;
+						ctr++;
+					}
+				}
+				var avgSalary = sumOfSalary/ctr;
+
+				var resultList = [];
+				for(var i = 0; i < data.Employees.length; i++) {
+					if( (data.Employees[i].DeptID == givenDeptId) && (data.Employees[i].Salary >= avgSalary) ) {
+						resultList.push(data.Employees[i].ID)
+					}
+				}
+				return resultList;
+			} else {
+				return [];
+			}
+		}
+		console.log(getListOfEmpIds(givenJson, 4));
+	</script>
+
+</html>
