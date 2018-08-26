@@ -1,0 +1,27 @@
+
+<html>
+	<script>
+		/****************************************************/
+		/********       SIMPLE ARRAY ROTATION        ********/
+		/****************************************************/
+		var rotateArray = function(A, d){
+			var aLen = A.length,
+			    temp;
+			if(aLen && d) {
+				for(var j = 0; j < d; j++) {
+					temp = A[0];
+					for(var i = 0; i < aLen - 1; i++) {
+						A[i] = A[i+1];
+					}
+					A[aLen-1] = temp;
+				}
+			}
+			for(var k = 0; k < aLen; k++) {
+				console.log(A[k]);
+			}
+		}
+
+		var arr = [1,2,3,4,5];
+		rotateArray(arr, 4);
+	</script>
+</html>
