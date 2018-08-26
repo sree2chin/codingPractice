@@ -1,0 +1,30 @@
+
+<html>
+	<script>
+		/****************************************************/
+		/********   Reversal algo for  ARRAY ROTATION *******/
+		/****************************************************/
+		var reverseArray = function(A, start, end) {
+			var temp;
+			while (start < end) {
+				temp = A[start];
+				A[start] = A[end];
+				A[end] = temp;
+				start++; end--;
+			}
+		}
+		var rotateArray = function(A, d){
+			var aLen = A.length;
+			reverseArray(A, 0, d-1);
+			reverseArray(A,d,aLen-1);
+			reverseArray(A, 0, aLen-1);
+			
+			for(var k = 0; k < aLen; k++) {
+				console.log(A[k]);
+			}
+		}
+
+		var arr = [1,2,3,4,5];
+		rotateArray(arr, 4);
+	</script>
+</html>
