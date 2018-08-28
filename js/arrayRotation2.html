@@ -15,9 +15,10 @@
 		}
 		var rotateArray = function(A, d){
 			var aLen = A.length;
-			reverseArray(A, 0, d-1);
-			reverseArray(A,d,aLen-1);
-			reverseArray(A, 0, aLen-1);
+			reverseArray(A, 0, d-1);  // reverse starting part 
+			reverseArray(A,d,aLen-1); // reverse the array left
+			// reverse the whole array which ineffect reverses the whole array
+			reverseArray(A, 0, aLen-1);   
 			
 			for(var k = 0; k < aLen; k++) {
 				console.log(A[k]);

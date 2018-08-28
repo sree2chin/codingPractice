@@ -1,0 +1,34 @@
+
+<html>
+	<script>
+		/****************************************************/
+		/********   add(1)(2)(3)            *********/
+		/****************************************************/
+		
+		var add = function(param1) {
+			return function(param2) {
+				return function(param3) {
+					return param1 + param2 + param3;
+				}
+			}
+		}
+
+		var somefunction = function() {
+			console.log("print something");
+			/* example of accessing global scope, type of closure.. everything is closure in js*/
+			console.dir(SVGAngle);      
+
+		}
+
+		var test1 = add(100);       
+		var test2 = add(2)(3);
+
+		/* Look inside [[Scopes]] to understand closure */
+		console.dir(test1);
+		console.dir(test2);
+
+		somefunction();
+		console.log(add(1)(2)(3));
+
+	</script>
+</html>
