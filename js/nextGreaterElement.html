@@ -1,0 +1,45 @@
+<html>
+	<script>
+		/****************************************************/
+		/********  NEXT GREATER ELEMENT USING STACK.    *****/
+		/****************************************************/
+		const NGE = (A) => {
+			var stackList = []; // consider this as stack.
+			var ngeList = [];
+			for (let i = 0; i < A.length; i++) {
+				ngeList.push(0);
+			}
+			var arrLength = A.length;
+			stackList.push(0);
+			var stackListTopElem, stackListLen;
+			for (var i = 1; i < arrLength; i++) {
+				stackListLen = stackList.length - 1;
+				if (stackListLen === -1) {
+					stackList.push(i);
+					continue;
+				}
+				stackListTopElem = stackList[stackListLen];
+				while (stackList.length > 0 && A[stackListTopElem] < A[i]) {
+					ngeList[stackListTopElem] = A[i];
+					// ngeList[stackListTopElem] = i;
+					stackList.pop();
+					stackListLen = stackList.length - 1;
+					stackListTopElem = stackList[stackListLen];
+				}
+				stackList.push(i);
+			}
+			while (stackList.length !== 0) {
+				ngeList[stackList[stackList.length -1]] = 0;
+				stackList.pop();
+			}
+			return ngeList;
+		};
+		let A = [11, 13, 21, 3];
+		let B = [13, 7, 6, 12];
+		let C = [5,4,3,4,5];
+		console.log(NGE(A));
+		console.log(NGE(B));
+		console.log(NGE(C));	
+
+	</script>
+</html>
