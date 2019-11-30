@@ -1,0 +1,80 @@
+<html>
+	<script>
+		/****************************************************/
+		/********  NEXT GREATER ELEMENT USING STACK.    *****/
+		/****************************************************/
+		// https://www.hackerrank.com/challenges/find-maximum-index-product/problem
+
+		const NGE = (arr) => {
+			const max = (a, b) => {
+				return a > b ? a : b;
+			}
+			var stackList = []; // consider this as stack.
+			var stackListLeft = [];
+			var ngeListRight = [];
+			var ngeListLeft = [];
+			for (let i = 0; i < arr.length; i++) {
+				ngeListRight.push(0);
+				ngeListLeft.push(0);
+			}
+			const arrLength = arr.length;
+			stackList.push(0);
+			stackListLeft.push(arrLength - 1);
+			var stackListTopElem, stackListLen;
+			for (var i = 1; i < arrLength; i++) {
+				stackListLen = stackList.length - 1;
+				if (stackListLen === -1) {
+					stackList.push(i);
+					continue;
+				}
+				stackListTopElem = stackList[stackListLen];
+				while (stackList.length > 0 && arr[stackListTopElem] < arr[i]) {
+					// ngeListRight[stackListTopElem] = arr[i];
+					ngeListRight[stackListTopElem] = i + 1;
+					stackList.pop();
+					stackListLen = stackList.length - 1;
+					stackListTopElem = stackList[stackListLen];
+				}
+				stackList.push(i);
+			}
+			while (stackList.length !== 0) {
+				ngeListRight[stackList[stackList.length -1]] = 0;
+				stackList.pop();
+			}
+			for (var i = arrLength - 1; i >= 0; i--) {
+				stackListLen = stackListLeft.length - 1;
+				if (stackListLen === -1) {
+					stackListLeft.push(i);
+					continue;
+				}
+				stackListTopElem = stackListLeft[stackListLen];
+				while (stackListLeft.length > 0 && arr[stackListTopElem] < arr[i]) {
+					// ngeListRight[stackListTopElem] = arr[i];
+					ngeListLeft[stackListTopElem] = i + 1;
+					stackListLeft.pop();
+					stackListLen = stackListLeft.length - 1;
+					stackListTopElem = stackListLeft[stackListLen];
+				}
+				stackListLeft.push(i);
+			}
+			while (stackListLeft.length !== 0) {
+				ngeListLeft[stackListLeft[stackListLeft.length -1]] = 0;
+				stackListLeft.pop();
+			}
+			console.log(ngeListRight);
+			console.log(ngeListLeft);
+			var result = 0;
+			for (var i = 0; i < arrLength; i++) {
+				result = max(result, (ngeListRight[i] * ngeListLeft[i]));
+			}
+			return result;
+		};
+		// let A = [11, 13, 21, 3];
+		// let B = [13, 7, 6, 12];
+		let C = [5,4,3,4,5];
+		// console.log(NGE(A));
+		// console.log(NGE(B));
+		console.log(NGE(C));	
+
+	</script>
+</html>
