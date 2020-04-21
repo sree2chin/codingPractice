@@ -1,0 +1,35 @@
+
+<html>
+	<script>
+		/****************************************************/
+		/********   sort 0,1 and 2 array            *********/
+		/****************************************************/
+		var swap = function(A, index1, index2) {
+			let temp = A[index1];
+			A[index1] = A[index2];
+			A[index2] = temp;
+		}
+		var sort = function(A){
+			const arrLength = A.length;
+			let low = 0;
+			let mid = 0;
+			let end = arrLength - 1;
+			let pivotElem;
+			while (mid <= end) {
+				pivotElem = A[mid];
+				if (pivotElem == 0) {
+					swap(A, low, mid);
+					low++;
+					mid++;
+				} else if (pivotElem == 1) {
+					mid++;
+				} else {
+					swap(A, mid, end);
+					end--;
+				}
+			}
+		}
+		var arr = [2, 1, 0, 0, 1, 2, 1, 0, 0, 2, 1, 1];
+		console.log(sort(arr));
+	</script>
+</html>
