@@ -38,3 +38,26 @@ int main() {
     return 0;
 }
 
+
+love: {
+    commonAttributes: {
+        pain: "intense",
+        timePeriod: "varies from person to person"
+    },
+    otherAttributes: [
+        "lust",
+        "romance",
+        "intimacy",
+        "infatuation",
+        "stupidity",
+        "jealous",
+        "wanting to talk",
+        "beauty",
+        "understanding",
+        "sex",
+        "wanting to be with other",
+        "frustration",
+        "longingness",
+        "uncontrollable",
+    ]
+}

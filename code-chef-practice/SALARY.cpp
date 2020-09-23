@@ -20,13 +20,14 @@ int findIndexOfMax(int A[], int N, int noOfSteps) {
         return noOfSteps;
     } else {
         for(i = 0; i < N; i++) {
-            if(i != maxIndex) {
+            if (i != maxIndex) {
                 A[i]++;
             }
         }
         return findIndexOfMax(A, N, noOfSteps+1);
     }
 }
+           
 
 int noOfSteps(int N, int A[]) {
     if(N == 1) {
